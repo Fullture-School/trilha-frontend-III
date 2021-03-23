@@ -1,0 +1,21 @@
+<section>
+    <form #formTasks="ngForm" (ngSubmit)="save(formTasks)">
+        <div class="area-text">
+            <div>
+                <label>Tarefa</label>
+                <input #task="ngModel" type="text" id="task" name="task" [(ngModel)]="book.task" required
+                    [ngClass]="{'input-error': task.invalid && task.dirty}" />
+            </div>
+
+            <span
+                [ngClass]="{'input-mandatory': task.invalid && task.dirty, 'input-filled': !task.dirty || !task.invalid && task.dirty }">*Deve
+                ser informado uma tarefa</span>
+        </div>
+
+        <div class="area-btn">
+            <button-action [titleButton]="titleButton"></button-action>
+        </div>
+        <list [dataList]="allTasks"></list>
+    </form>
+    <button-action [titleButton]="titleButtonList" (buttonEvent)="clear()"></button-action>
+</section>
